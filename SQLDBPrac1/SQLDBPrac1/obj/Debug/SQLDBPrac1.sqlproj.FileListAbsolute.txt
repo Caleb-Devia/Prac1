@@ -1,0 +1,10 @@
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\bin\Debug\SQLDBPrac1.dacpac
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\bin\Debug\SQLDBPrac1.dll
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\bin\Debug\SQLDBPrac1.pdb
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\obj\Debug\SQLDBPrac1.sqlproj.AssemblyReference.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\obj\Debug\Model.xml
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\obj\Debug\refactor.xml
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\obj\Debug\postdeploy.sql
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\obj\Debug\predeploy.sql
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\obj\Debug\SQLDBPrac1.dll
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\SQLDBPrac1\SQLDBPrac1\obj\Debug\SQLDBPrac1.pdb

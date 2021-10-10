@@ -57,4 +57,13 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="ALUMNO.sql" />
+    <Build Include="APODERADO.sql" />
+    <Build Include="CURSO.sql" />
+    <Build Include="INSCRITO.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="SQLDBPrac1.refactorlog" />
+  </ItemGroup>
 </Project>
