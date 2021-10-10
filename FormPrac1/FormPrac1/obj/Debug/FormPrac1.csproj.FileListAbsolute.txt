@@ -1,0 +1,10 @@
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\bin\Debug\FormPrac1.exe.config
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\bin\Debug\FormPrac1.exe
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\bin\Debug\FormPrac1.pdb
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\obj\Debug\FormPrac1.csproj.AssemblyReference.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\obj\Debug\FormPrac1.Form1.resources
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\obj\Debug\FormPrac1.Properties.Resources.resources
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\obj\Debug\FormPrac1.csproj.GenerateResource.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\obj\Debug\FormPrac1.csproj.CoreCompileInputs.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\obj\Debug\FormPrac1.exe
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\FormPrac1\FormPrac1\obj\Debug\FormPrac1.pdb
