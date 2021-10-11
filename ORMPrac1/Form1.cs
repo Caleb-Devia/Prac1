@@ -25,15 +25,10 @@ namespace ORMPrac1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             comboBox1.Items.Add("ALUMNO");
             comboBox1.Items.Add("APODERADO");
             comboBox1.Items.Add("CURSO");
             comboBox1.Items.Add("INSCRITO");
-
-
-
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,29 +54,21 @@ namespace ORMPrac1
 
                 indice = 0;
                 Llenar();
-
-
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             indice--;
             Llenar();
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             indice++;
             Llenar();
-
-
-
         }
+
         public void Llenar()
         {
             if (indice < 0)
@@ -90,14 +77,17 @@ namespace ORMPrac1
             string cadena = "";
             switch (comboBox1.SelectedIndex)
             {
-                // En el caso 0 hace una busqueda en la tabla de alumnos
+                // Busqueda en tabla ALUMNOS --- Caso 0
+
                 case 0:
                     if (indice >= oAlumno.Count)
                         indice = oAlumno.Count - 1;
 
-                    cadena = oAlumno[indice].Id.ToString() + "." + oAlumno[indice].Nombre + ", de" + oAlumno[indice].Ciudad + ", " + oAlumno[indice].Edad + " Años";
+                    cadena = "Id: " + oAlumno[indice].Id.ToString() + " --- El nombre del alumno es: " + oAlumno[indice].Nombre + ", Proveniente de la ciudad de: " + oAlumno[indice].Ciudad + " Y su edad es de: " + oAlumno[indice].Edad + " Años";
                     break;
-                // En el caso se usa Find y DBPrac1Entity para buscar en las distintas tablas 
+
+                // Se usa Find y DBPrac1Entiti para buscar diferentes tablas --- Caso 1 
+
                 case 1:
                     if (indice >= oApoderado.Count)
                         indice = oApoderado.Count - 1;
@@ -106,20 +96,25 @@ namespace ORMPrac1
                     using (Model.DBPrac1Entities db = new Model.DBPrac1Entities())
                     {
                         oAlumno = db.ALUMNO.ToList();
-                        // lo primero es traer el id de apoderado por medio del objeto que seria el nombre, luego se evalua los id de alumno y apoderado para ver si hay alguna relacion y al final simplemente se trae el nombre el alumno
-                        cadena = oApoderado[indice].Id.ToString() + ". " + oApoderado[indice].Nombre + ", es el | la apoderado|a de " + oAlumno.Find(a => a.Id == (int)oApoderado[indice].Id_Alumno).Nombre;
+
+                        // 1ero Extraer Id_Apoderado gracias al objeto oApoderado, 2do Evalua Id_Alumno y Apoderado para comprobar si existe un relacion y 3ero se trae el Nombre del Alumno
+
+                        cadena = "Id: " + oApoderado[indice].Id.ToString() + " --- El nombre del apoderado es: " + oApoderado[indice].Nombre + ", El cual representa a: " + oAlumno.Find(a => a.Id == (int)oApoderado[indice].Id_Alumno).Nombre;
                     }
                     break;
 
-                // En el caso 2 hace una busqueda en la tabla de alumnos
+                // Busqueda tabla ALUMNO --- Caso 2
+
                 case 2:
                     if (indice >= oCurso.Count)
                         indice = oCurso.Count - 1;
 
-                    cadena = oCurso[indice].Cod.ToString() + ". " + oCurso[indice].Nombre + ", Fecha Inicio " + oCurso[indice].Fecha_Inicio + ", Tiempo de Duracion" + oCurso[indice].Duracion + ", Valor " + oCurso[indice].Valor;
+                    cadena = "Id: " + oCurso[indice].Cod.ToString() + " --- Nombre del curso: " + oCurso[indice].Nombre + ", Tiene una fecha de inicio de: " + oCurso[indice].Fecha_Inicio + ", Duracion del curso: " + oCurso[indice].Duracion + " Dias, "  + " Y el valor de curso es: " + " $" + oCurso[indice].Valor + " USD";
                     break;
-                
-                    // En el caso 3 hace una busqueda en la tabla de inscrito alumnos y tambien de alumno y se usa el Find nuevamente para validar datos iguales en las tablas
+
+
+                //1ero Busqueda en tabla INSCRITO y tabla ALUMNO 2do Ejecuta Find de para validar datos identicos en las tablas --- Caso 3
+
                 case 3:
                     if (indice >= oInscrito.Count)
                         indice = oInscrito.Count - 1;
@@ -129,14 +124,16 @@ namespace ORMPrac1
                         oCurso = db.CURSO.ToList();
 
 
-                        cadena = oInscrito[indice].Id.ToString() + "," + oAlumno.Find(a => a.Id == (int)oInscrito[indice].Id_Alumno).Nombre + "Se encuentra en el curso:  " + oCurso.Find(a => a.Cod == (int)oInscrito[indice].Cod_Curso).Nombre;
+                        cadena = "Id: " + oInscrito[indice].Id.ToString() + " --- El nombre del inscrito es: " + oAlumno.Find(a => a.Id == (int)oInscrito[indice].Id_Alumno).Nombre + " Y se encuentra en el curso de: " + oCurso.Find(a => a.Cod == (int)oInscrito[indice].Cod_Curso).Nombre;
 
                     }
                     break;
 
 
             }
-            //luego en el textBox1 mostramos cadena que es la ejecucion segun el caso del switch
+
+            //El TexBox1 dara su respectivo valor dependiendo del Caso del Switch
+
             textBox1.Text = cadena;
         }
     }
