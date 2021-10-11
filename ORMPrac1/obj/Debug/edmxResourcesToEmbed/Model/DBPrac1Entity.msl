@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBPrac1ModelStoreContainer" CdmEntityContainer="DBPrac1Entities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="DBPrac1Model.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ALUMNO">
+      <EntityTypeMapping TypeName="DBPrac1Model.ALUMNO">
+        <MappingFragment StoreEntitySet="ALUMNO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APODERADO">
+      <EntityTypeMapping TypeName="DBPrac1Model.APODERADO">
+        <MappingFragment StoreEntitySet="APODERADO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Id_Alumno" ColumnName="Id_Alumno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSO">
+      <EntityTypeMapping TypeName="DBPrac1Model.CURSO">
+        <MappingFragment StoreEntitySet="CURSO">
+          <ScalarProperty Name="Cod" ColumnName="Cod" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSCRITO">
+      <EntityTypeMapping TypeName="DBPrac1Model.INSCRITO">
+        <MappingFragment StoreEntitySet="INSCRITO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Alumno" ColumnName="Id_Alumno" />
+          <ScalarProperty Name="Cod_Curso" ColumnName="Cod_Curso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

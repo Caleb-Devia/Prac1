@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBPrac1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="APODERADO" Relationship="Self.FK_APODERADO_ALUMNO" FromRole="ALUMNO" ToRole="APODERADO" />
+    <NavigationProperty Name="INSCRITO" Relationship="Self.FK_INSCRITO_ALUMNO" FromRole="ALUMNO" ToRole="INSCRITO" />
+  </EntityType>
+  <EntityType Name="APODERADO">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id_Alumno" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ALUMNO" Relationship="Self.FK_APODERADO_ALUMNO" FromRole="APODERADO" ToRole="ALUMNO" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="Cod" />
+    </Key>
+    <Property Name="Cod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Duracion" Type="Int32" Nullable="false" />
+    <Property Name="Valor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="INSCRITO" Relationship="Self.FK_INSCRITO_CURSO" FromRole="CURSO" ToRole="INSCRITO" />
+  </EntityType>
+  <EntityType Name="INSCRITO">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Alumno" Type="Int32" Nullable="false" />
+    <Property Name="Cod_Curso" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ALUMNO" Relationship="Self.FK_INSCRITO_ALUMNO" FromRole="INSCRITO" ToRole="ALUMNO" />
+    <NavigationProperty Name="CURSO" Relationship="Self.FK_INSCRITO_CURSO" FromRole="INSCRITO" ToRole="CURSO" />
+  </EntityType>
+  <Association Name="FK_APODERADO_ALUMNO">
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+    <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUMNO">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="APODERADO">
+        <PropertyRef Name="Id_Alumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSCRITO_ALUMNO">
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+    <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUMNO">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="INSCRITO">
+        <PropertyRef Name="Id_Alumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSCRITO_CURSO">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+    <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="Cod" />
+      </Principal>
+      <Dependent Role="INSCRITO">
+        <PropertyRef Name="Cod_Curso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBPrac1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+    <EntitySet Name="APODERADO" EntityType="Self.APODERADO" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" />
+    <EntitySet Name="INSCRITO" EntityType="Self.INSCRITO" />
+    <AssociationSet Name="FK_APODERADO_ALUMNO" Association="Self.FK_APODERADO_ALUMNO">
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+      <End Role="APODERADO" EntitySet="APODERADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSCRITO_ALUMNO" Association="Self.FK_INSCRITO_ALUMNO">
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+      <End Role="INSCRITO" EntitySet="INSCRITO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSCRITO_CURSO" Association="Self.FK_INSCRITO_CURSO">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="INSCRITO" EntitySet="INSCRITO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

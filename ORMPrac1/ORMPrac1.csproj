@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,8 +61,41 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ALUMNO.cs">
+      <DependentUpon>DBPrac1Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\APODERADO.cs">
+      <DependentUpon>DBPrac1Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CURSO.cs">
+      <DependentUpon>DBPrac1Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\C__RefactorLog.cs">
+      <DependentUpon>DBPrac1Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBPrac1Entity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPrac1Entity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBPrac1Entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPrac1Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBPrac1Entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPrac1Entity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\INSCRITO.cs">
+      <DependentUpon>DBPrac1Entity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +105,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="Model\DBPrac1Entity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBPrac1Entity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DBPrac1Entity.edmx.diagram">
+      <DependentUpon>DBPrac1Entity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +125,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\DBPrac1Entity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBPrac1Entity.Context.cs</LastGenOutput>
+      <DependentUpon>DBPrac1Entity.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DBPrac1Entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBPrac1Entity.edmx</DependentUpon>
+      <LastGenOutput>DBPrac1Entity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

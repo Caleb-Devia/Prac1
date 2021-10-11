@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBPrac1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ALUMNO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APODERADO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Alumno" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CURSO">
+          <Key>
+            <PropertyRef Name="Cod" />
+          </Key>
+          <Property Name="Cod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Duracion" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INSCRITO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Alumno" Type="int" Nullable="false" />
+          <Property Name="Cod_Curso" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_APODERADO_ALUMNO">
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+          <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="APODERADO">
+              <PropertyRef Name="Id_Alumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSCRITO_ALUMNO">
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+          <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="INSCRITO">
+              <PropertyRef Name="Id_Alumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSCRITO_CURSO">
+          <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+          <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="Cod" />
+            </Principal>
+            <Dependent Role="INSCRITO">
+              <PropertyRef Name="Cod_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBPrac1ModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APODERADO" EntityType="Self.APODERADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INSCRITO" EntityType="Self.INSCRITO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_APODERADO_ALUMNO" Association="Self.FK_APODERADO_ALUMNO">
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+            <End Role="APODERADO" EntitySet="APODERADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSCRITO_ALUMNO" Association="Self.FK_INSCRITO_ALUMNO">
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+            <End Role="INSCRITO" EntitySet="INSCRITO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSCRITO_CURSO" Association="Self.FK_INSCRITO_CURSO">
+            <End Role="CURSO" EntitySet="CURSO" />
+            <End Role="INSCRITO" EntitySet="INSCRITO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBPrac1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ALUMNO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APODERADO" Relationship="Self.FK_APODERADO_ALUMNO" FromRole="ALUMNO" ToRole="APODERADO" />
+          <NavigationProperty Name="INSCRITO" Relationship="Self.FK_INSCRITO_ALUMNO" FromRole="ALUMNO" ToRole="INSCRITO" />
+        </EntityType>
+        <EntityType Name="APODERADO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_Alumno" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ALUMNO" Relationship="Self.FK_APODERADO_ALUMNO" FromRole="APODERADO" ToRole="ALUMNO" />
+        </EntityType>
+        <EntityType Name="CURSO">
+          <Key>
+            <PropertyRef Name="Cod" />
+          </Key>
+          <Property Name="Cod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Duracion" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INSCRITO" Relationship="Self.FK_INSCRITO_CURSO" FromRole="CURSO" ToRole="INSCRITO" />
+        </EntityType>
+        <EntityType Name="INSCRITO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Alumno" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Curso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ALUMNO" Relationship="Self.FK_INSCRITO_ALUMNO" FromRole="INSCRITO" ToRole="ALUMNO" />
+          <NavigationProperty Name="CURSO" Relationship="Self.FK_INSCRITO_CURSO" FromRole="INSCRITO" ToRole="CURSO" />
+        </EntityType>
+        <Association Name="FK_APODERADO_ALUMNO">
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+          <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="APODERADO">
+              <PropertyRef Name="Id_Alumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSCRITO_ALUMNO">
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+          <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="INSCRITO">
+              <PropertyRef Name="Id_Alumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSCRITO_CURSO">
+          <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+          <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="Cod" />
+            </Principal>
+            <Dependent Role="INSCRITO">
+              <PropertyRef Name="Cod_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBPrac1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+          <EntitySet Name="APODERADO" EntityType="Self.APODERADO" />
+          <EntitySet Name="CURSO" EntityType="Self.CURSO" />
+          <EntitySet Name="INSCRITO" EntityType="Self.INSCRITO" />
+          <AssociationSet Name="FK_APODERADO_ALUMNO" Association="Self.FK_APODERADO_ALUMNO">
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+            <End Role="APODERADO" EntitySet="APODERADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSCRITO_ALUMNO" Association="Self.FK_INSCRITO_ALUMNO">
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+            <End Role="INSCRITO" EntitySet="INSCRITO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSCRITO_CURSO" Association="Self.FK_INSCRITO_CURSO">
+            <End Role="CURSO" EntitySet="CURSO" />
+            <End Role="INSCRITO" EntitySet="INSCRITO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBPrac1ModelStoreContainer" CdmEntityContainer="DBPrac1Entities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="DBPrac1Model.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALUMNO">
+            <EntityTypeMapping TypeName="DBPrac1Model.ALUMNO">
+              <MappingFragment StoreEntitySet="ALUMNO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APODERADO">
+            <EntityTypeMapping TypeName="DBPrac1Model.APODERADO">
+              <MappingFragment StoreEntitySet="APODERADO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Id_Alumno" ColumnName="Id_Alumno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CURSO">
+            <EntityTypeMapping TypeName="DBPrac1Model.CURSO">
+              <MappingFragment StoreEntitySet="CURSO">
+                <ScalarProperty Name="Cod" ColumnName="Cod" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSCRITO">
+            <EntityTypeMapping TypeName="DBPrac1Model.INSCRITO">
+              <MappingFragment StoreEntitySet="INSCRITO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Alumno" ColumnName="Id_Alumno" />
+                <ScalarProperty Name="Cod_Curso" ColumnName="Cod_Curso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

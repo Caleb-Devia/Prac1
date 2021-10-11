@@ -1,0 +1,15 @@
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\bin\Debug\ORMPrac1.exe.config
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\bin\Debug\ORMPrac1.exe
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\bin\Debug\ORMPrac1.pdb
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\bin\Debug\EntityFramework.dll
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\bin\Debug\EntityFramework.xml
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.csproj.AssemblyReference.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.Form1.resources
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.Properties.Resources.resources
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.csproj.GenerateResource.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.csproj.CoreCompileInputs.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.csproj.CopyComplete
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.exe
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac1\obj\Debug\ORMPrac1.pdb

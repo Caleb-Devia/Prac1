@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBPrac1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ciudad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Edad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APODERADO">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id_Alumno" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="Cod" />
+    </Key>
+    <Property Name="Cod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Duracion" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INSCRITO">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Alumno" Type="int" Nullable="false" />
+    <Property Name="Cod_Curso" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_APODERADO_ALUMNO">
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+    <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUMNO">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="APODERADO">
+        <PropertyRef Name="Id_Alumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSCRITO_ALUMNO">
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+    <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUMNO">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="INSCRITO">
+        <PropertyRef Name="Id_Alumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSCRITO_CURSO">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+    <End Role="INSCRITO" Type="Self.INSCRITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="Cod" />
+      </Principal>
+      <Dependent Role="INSCRITO">
+        <PropertyRef Name="Cod_Curso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBPrac1ModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APODERADO" EntityType="Self.APODERADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INSCRITO" EntityType="Self.INSCRITO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_APODERADO_ALUMNO" Association="Self.FK_APODERADO_ALUMNO">
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+      <End Role="APODERADO" EntitySet="APODERADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSCRITO_ALUMNO" Association="Self.FK_INSCRITO_ALUMNO">
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+      <End Role="INSCRITO" EntitySet="INSCRITO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSCRITO_CURSO" Association="Self.FK_INSCRITO_CURSO">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="INSCRITO" EntitySet="INSCRITO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
