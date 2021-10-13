@@ -10,7 +10,13 @@ using System.Windows.Forms;
 
 namespace ORMPrac1
 {
+
+    /// <summary>
+    /// Conversion de vectores, son vistas para el Form1, variables globales 
+    /// </summary>
+
     public partial class Form1 : Form
+
     {
         public List<Model.ALUMNO> oAlumno;
         public List<Model.APODERADO> oApoderado;
@@ -23,6 +29,12 @@ namespace ORMPrac1
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Texto del ComboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.Items.Add("ALUMNO");
@@ -30,6 +42,13 @@ namespace ORMPrac1
             comboBox1.Items.Add("CURSO");
             comboBox1.Items.Add("INSCRITO");
         }
+
+        /// <summary>
+        /// Se plantean los casos pertinentes para el ComboBox, va del 0 al 3 (Casos)
+        /// Funcion: Busqueda de cada una de las tablas dependiendo de la solicitud.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -57,6 +76,12 @@ namespace ORMPrac1
             }
         }
 
+        /// <summary>
+        /// Botones del click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void button1_Click(object sender, EventArgs e)
         {
             indice--;
@@ -69,6 +94,10 @@ namespace ORMPrac1
             Llenar();
         }
 
+        /// <summary>
+        /// Metodo para llenar el TextBox con i-registro de la j-Tabla en el ComboBox1
+        /// </summary>
+        
         public void Llenar()
         {
             if (indice < 0)
@@ -77,7 +106,7 @@ namespace ORMPrac1
             string cadena = "";
             switch (comboBox1.SelectedIndex)
             {
-                // Busqueda en tabla ALUMNOS --- Caso 0
+                // Busqueda en tabla ALUMNOS ---Caso 0
 
                 case 0:
                     if (indice >= oAlumno.Count)
@@ -86,7 +115,7 @@ namespace ORMPrac1
                     cadena = "Id: " + oAlumno[indice].Id.ToString() + " --- El nombre del alumno es: " + oAlumno[indice].Nombre + ", Proveniente de la ciudad de: " + oAlumno[indice].Ciudad + " Y su edad es de: " + oAlumno[indice].Edad + " Años";
                     break;
 
-                // Se usa Find y DBPrac1Entiti para buscar diferentes tablas --- Caso 1 
+                // Se usa Find y DBPrac1Entiti para buscar diferentes tablas, El caso de apoderado --- Caso 1 
 
                 case 1:
                     if (indice >= oApoderado.Count)
@@ -97,13 +126,13 @@ namespace ORMPrac1
                     {
                         oAlumno = db.ALUMNO.ToList();
 
-                        // 1ero Extraer Id_Apoderado gracias al objeto oApoderado, 2do Evalua Id_Alumno y Apoderado para comprobar si existe un relacion y 3ero se trae el Nombre del Alumno
+                        // 1ero Extraer Id_Apoderado gracias al objeto oApoderado, 2do Evalua Id_Alumno y Apoderado para comprobar si existe un relacion y 3ero se trae el Nombre del Alumno, El caso de Alumno
 
                         cadena = "Id: " + oApoderado[indice].Id.ToString() + " --- El nombre del apoderado es: " + oApoderado[indice].Nombre + ", El cual representa a: " + oAlumno.Find(a => a.Id == (int)oApoderado[indice].Id_Alumno).Nombre;
                     }
                     break;
 
-                // Busqueda tabla ALUMNO --- Caso 2
+                // Busqueda tabla Curso --- Caso 2
 
                 case 2:
                     if (indice >= oCurso.Count)
