@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB2Entity.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DB2EntityStoreContainer">
+    <EntitySet Name="AGENTS" EntityType="DB2Entity.Store.AGENTS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOMER" EntityType="DB2Entity.Store.CUSTOMER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ORDERS" EntityType="DB2Entity.Store.ORDERS" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AGENTSCUSTOMER" Association="DB2Entity.Store.AGENTSCUSTOMER">
+      <End Role="AGENTS" EntitySet="AGENTS" />
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+    </AssociationSet>
+    <AssociationSet Name="CUSTOMERORDERS" Association="DB2Entity.Store.CUSTOMERORDERS">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="AGENTSORDERS" Association="DB2Entity.Store.AGENTSORDERS">
+      <End Role="AGENTS" EntitySet="AGENTS" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AGENTS">
+    <Key>
+      <PropertyRef Name="AGENT_CODE" />
+    </Key>
+    <Property Name="AGENT_CODE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AGENT_NAME" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WORKING_AREA" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="COMISSION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PHONE_NO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="COUNTRY" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUST_CODE" />
+    </Key>
+    <Property Name="CUST_CODE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUST_NAME" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CUST_CITY" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WORKING_AREA" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CUST_COUNTRY" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GRADE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OPENING_AMT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RECEIVE_AMT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PAYMENT_AMT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OUTSTANDING_AMT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PHONE_NO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AGENTS_CODE" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDERS">
+    <Key>
+      <PropertyRef Name="ORDER_NUM" />
+    </Key>
+    <Property Name="ORDER_NUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ORD_AMOUNT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ADVENCE_AMOUNT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ORD_DATE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ORD_DESCRIPTION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CUSTOMERCUST_CODE" Type="int" Nullable="false" />
+    <Property Name="AGENTSAGENT_CODE" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="AGENTSCUSTOMER">
+    <End Role="AGENTS" Type="DB2Entity.Store.AGENTS" Multiplicity="1" />
+    <End Role="CUSTOMER" Type="DB2Entity.Store.CUSTOMER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENTS">
+        <PropertyRef Name="AGENT_CODE" />
+      </Principal>
+      <Dependent Role="CUSTOMER">
+        <PropertyRef Name="AGENTS_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CUSTOMERORDERS">
+    <End Role="CUSTOMER" Type="DB2Entity.Store.CUSTOMER" Multiplicity="1" />
+    <End Role="ORDERS" Type="DB2Entity.Store.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUST_CODE" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="CUSTOMERCUST_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AGENTSORDERS">
+    <End Role="AGENTS" Type="DB2Entity.Store.AGENTS" Multiplicity="1" />
+    <End Role="ORDERS" Type="DB2Entity.Store.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENTS">
+        <PropertyRef Name="AGENT_CODE" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="AGENTSAGENT_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DB2Entity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DB2EntityContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGENTS" EntityType="DB2Entity.AGENTS" />
+          <EntitySet Name="CUSTOMER" EntityType="DB2Entity.CUSTOMER" />
+          <EntitySet Name="ORDERS" EntityType="DB2Entity.ORDERS" />
+          <AssociationSet Name="AGENTSCUSTOMER" Association="DB2Entity.AGENTSCUSTOMER">
+            <End Role="AGENTS" EntitySet="AGENTS" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="AGENTSORDERS" Association="DB2Entity.AGENTSORDERS">
+            <End Role="AGENTS" EntitySet="AGENTS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="CUSTOMERORDERS" Association="DB2Entity.CUSTOMERORDERS">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AGENTS">
+          <Key>
+            <PropertyRef Name="AGENT_CODE" />
+          </Key>
+          <Property Name="AGENT_CODE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="AGENT_NAME" Type="String" Nullable="false" />
+          <Property Name="WORKING_AREA" Type="String" Nullable="false" />
+          <Property Name="COMISSION" Type="Decimal" Nullable="false" />
+          <Property Name="PHONE_NO" Type="String" Nullable="false" />
+          <Property Name="COUNTRY" Type="String" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="DB2Entity.AGENTSCUSTOMER" FromRole="AGENTS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="ORDERS" Relationship="DB2Entity.AGENTSORDERS" FromRole="AGENTS" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUST_CODE" />
+          </Key>
+          <Property Name="CUST_CODE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUST_NAME" Type="String" Nullable="false" />
+          <Property Name="CUST_CITY" Type="String" Nullable="false" />
+          <Property Name="WORKING_AREA" Type="String" Nullable="false" />
+          <Property Name="CUST_COUNTRY" Type="String" Nullable="false" />
+          <Property Name="GRADE" Type="Int32" Nullable="false" />
+          <Property Name="OPENING_AMT" Type="Decimal" Nullable="false" />
+          <Property Name="RECEIVE_AMT" Type="Decimal" Nullable="false" />
+          <Property Name="PAYMENT_AMT" Type="Decimal" Nullable="false" />
+          <Property Name="OUTSTANDING_AMT" Type="Decimal" Nullable="false" />
+          <Property Name="PHONE_NO" Type="String" Nullable="false" />
+          <NavigationProperty Name="AGENTS" Relationship="DB2Entity.AGENTSCUSTOMER" FromRole="CUSTOMER" ToRole="AGENTS" />
+          <Property Name="AGENT_CODE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ORDERS" Relationship="DB2Entity.CUSTOMERORDERS" FromRole="CUSTOMER" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORD_NUM" />
+          </Key>
+          <Property Name="ORD_NUM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORD_AMOUNT" Type="Decimal" Nullable="false" />
+          <Property Name="ADVENCE_AMOUNT" Type="Decimal" Nullable="false" />
+          <Property Name="ORD_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="ORD_DESCRIPTION" Type="String" Nullable="false" />
+          <NavigationProperty Name="AGENTS" Relationship="DB2Entity.AGENTSORDERS" FromRole="ORDERS" ToRole="AGENTS" />
+          <Property Name="AGENT_CODE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="DB2Entity.CUSTOMERORDERS" FromRole="ORDERS" ToRole="CUSTOMER" />
+          <Property Name="CUST_CODE" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AGENTSCUSTOMER">
+          <End Type="DB2Entity.AGENTS" Role="AGENTS" Multiplicity="1" />
+          <End Type="DB2Entity.CUSTOMER" Role="CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENTS">
+              <PropertyRef Name="AGENT_CODE" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="AGENT_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AGENTSORDERS">
+          <End Type="DB2Entity.AGENTS" Role="AGENTS" Multiplicity="1" />
+          <End Type="DB2Entity.ORDERS" Role="ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENTS">
+              <PropertyRef Name="AGENT_CODE" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="AGENT_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUSTOMERORDERS">
+          <End Type="DB2Entity.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
+          <End Type="DB2Entity.ORDERS" Role="ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUST_CODE" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CUST_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB2EntityStoreContainer" CdmEntityContainer="DB2EntityContainer">
+    <EntitySetMapping Name="AGENTS">
+      <EntityTypeMapping TypeName="IsTypeOf(DB2Entity.AGENTS)">
+        <MappingFragment StoreEntitySet="AGENTS">
+          <ScalarProperty Name="AGENT_CODE" ColumnName="AGENT_CODE" />
+          <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+          <ScalarProperty Name="WORKING_AREA" ColumnName="WORKING_AREA" />
+          <ScalarProperty Name="COMISSION" ColumnName="COMISSION" />
+          <ScalarProperty Name="PHONE_NO" ColumnName="PHONE_NO" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER">
+      <EntityTypeMapping TypeName="IsTypeOf(DB2Entity.CUSTOMER)">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="CUST_CODE" ColumnName="CUST_CODE" />
+          <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
+          <ScalarProperty Name="CUST_CITY" ColumnName="CUST_CITY" />
+          <ScalarProperty Name="WORKING_AREA" ColumnName="WORKING_AREA" />
+          <ScalarProperty Name="CUST_COUNTRY" ColumnName="CUST_COUNTRY" />
+          <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+          <ScalarProperty Name="OPENING_AMT" ColumnName="OPENING_AMT" />
+          <ScalarProperty Name="RECEIVE_AMT" ColumnName="RECEIVE_AMT" />
+          <ScalarProperty Name="PAYMENT_AMT" ColumnName="PAYMENT_AMT" />
+          <ScalarProperty Name="OUTSTANDING_AMT" ColumnName="OUTSTANDING_AMT" />
+          <ScalarProperty Name="PHONE_NO" ColumnName="PHONE_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERS">
+      <EntityTypeMapping TypeName="IsTypeOf(DB2Entity.ORDERS)">
+        <MappingFragment StoreEntitySet="ORDERS">
+          <ScalarProperty Name="ORD_NUM" ColumnName="ORDER_NUM" />
+          <ScalarProperty Name="ORD_AMOUNT" ColumnName="ORD_AMOUNT" />
+          <ScalarProperty Name="ADVENCE_AMOUNT" ColumnName="ADVENCE_AMOUNT" />
+          <ScalarProperty Name="ORD_DATE" ColumnName="ORD_DATE" />
+          <ScalarProperty Name="ORD_DESCRIPTION" ColumnName="ORD_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
