@@ -13,12 +13,12 @@
       <End Role="AGENTS" EntitySet="AGENTS" />
       <End Role="CUSTOMER" EntitySet="CUSTOMER" />
     </AssociationSet>
-    <AssociationSet Name="CUSTOMERORDERS" Association="DB2Entity.Store.CUSTOMERORDERS">
-      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
-      <End Role="ORDERS" EntitySet="ORDERS" />
-    </AssociationSet>
     <AssociationSet Name="AGENTSORDERS" Association="DB2Entity.Store.AGENTSORDERS">
       <End Role="AGENTS" EntitySet="AGENTS" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="CUSTOMERORDERS" Association="DB2Entity.Store.CUSTOMERORDERS">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
       <End Role="ORDERS" EntitySet="ORDERS" />
     </AssociationSet>
   </EntityContainer>
@@ -26,10 +26,10 @@
     <Key>
       <PropertyRef Name="AGENT_CODE" />
     </Key>
-    <Property Name="AGENT_CODE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AGENT_CODE" Type="int" Nullable="false" />
     <Property Name="AGENT_NAME" Type="nvarchar(max)" Nullable="false" />
     <Property Name="WORKING_AREA" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="COMISSION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="COMISSION" Type="decimal" Nullable="false" />
     <Property Name="PHONE_NO" Type="nvarchar(max)" Nullable="false" />
     <Property Name="COUNTRY" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
@@ -42,25 +42,25 @@
     <Property Name="CUST_CITY" Type="nvarchar(max)" Nullable="false" />
     <Property Name="WORKING_AREA" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CUST_COUNTRY" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="GRADE" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OPENING_AMT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RECEIVE_AMT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PAYMENT_AMT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OUTSTANDING_AMT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GRADE" Type="int" Nullable="false" />
+    <Property Name="OPENING_AMT" Type="decimal" Nullable="false" />
+    <Property Name="RECEIVE_AMT" Type="decimal" Nullable="false" />
+    <Property Name="PAYMENT_AMT" Type="decimal" Nullable="false" />
+    <Property Name="OUTSTANDING_AMT" Type="decimal" Nullable="false" />
     <Property Name="PHONE_NO" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="AGENTS_CODE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AGENT_CODE" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ORDERS">
     <Key>
-      <PropertyRef Name="ORDER_NUM" />
+      <PropertyRef Name="ORD_NUM" />
     </Key>
-    <Property Name="ORDER_NUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ORD_AMOUNT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ADVENCE_AMOUNT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ORD_DATE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ORD_NUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ORD_AMOUNT" Type="decimal" Nullable="false" />
+    <Property Name="ADVENCE_AMOUNT" Type="decimal" Nullable="false" />
+    <Property Name="ORD_DATE" Type="datetime" Nullable="false" />
     <Property Name="ORD_DESCRIPTION" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CUSTOMERCUST_CODE" Type="int" Nullable="false" />
-    <Property Name="AGENTSAGENT_CODE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AGENT_CODE" Type="int" Nullable="false" />
+    <Property Name="CUST_CODE" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="AGENTSCUSTOMER">
     <End Role="AGENTS" Type="DB2Entity.Store.AGENTS" Multiplicity="1" />
@@ -70,19 +70,7 @@
         <PropertyRef Name="AGENT_CODE" />
       </Principal>
       <Dependent Role="CUSTOMER">
-        <PropertyRef Name="AGENTS_CODE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CUSTOMERORDERS">
-    <End Role="CUSTOMER" Type="DB2Entity.Store.CUSTOMER" Multiplicity="1" />
-    <End Role="ORDERS" Type="DB2Entity.Store.ORDERS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CUSTOMER">
-        <PropertyRef Name="CUST_CODE" />
-      </Principal>
-      <Dependent Role="ORDERS">
-        <PropertyRef Name="CUSTOMERCUST_CODE" />
+        <PropertyRef Name="AGENT_CODE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -94,7 +82,19 @@
         <PropertyRef Name="AGENT_CODE" />
       </Principal>
       <Dependent Role="ORDERS">
-        <PropertyRef Name="AGENTSAGENT_CODE" />
+        <PropertyRef Name="AGENT_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CUSTOMERORDERS">
+    <End Role="CUSTOMER" Type="DB2Entity.Store.CUSTOMER" Multiplicity="1" />
+    <End Role="ORDERS" Type="DB2Entity.Store.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUST_CODE" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="CUST_CODE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -233,17 +233,20 @@
           <ScalarProperty Name="PAYMENT_AMT" ColumnName="PAYMENT_AMT" />
           <ScalarProperty Name="OUTSTANDING_AMT" ColumnName="OUTSTANDING_AMT" />
           <ScalarProperty Name="PHONE_NO" ColumnName="PHONE_NO" />
+          <ScalarProperty Name="AGENT_CODE" ColumnName="AGENT_CODE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ORDERS">
       <EntityTypeMapping TypeName="IsTypeOf(DB2Entity.ORDERS)">
         <MappingFragment StoreEntitySet="ORDERS">
-          <ScalarProperty Name="ORD_NUM" ColumnName="ORDER_NUM" />
+          <ScalarProperty Name="ORD_NUM" ColumnName="ORD_NUM" />
           <ScalarProperty Name="ORD_AMOUNT" ColumnName="ORD_AMOUNT" />
           <ScalarProperty Name="ADVENCE_AMOUNT" ColumnName="ADVENCE_AMOUNT" />
           <ScalarProperty Name="ORD_DATE" ColumnName="ORD_DATE" />
           <ScalarProperty Name="ORD_DESCRIPTION" ColumnName="ORD_DESCRIPTION" />
+          <ScalarProperty Name="AGENT_CODE" ColumnName="AGENT_CODE" />
+          <ScalarProperty Name="CUST_CODE" ColumnName="CUST_CODE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

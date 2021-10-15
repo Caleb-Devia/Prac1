@@ -61,18 +61,35 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\AGENTS.cs">
+      <DependentUpon>DB2Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CUSTOMER.cs">
+      <DependentUpon>DB2Entity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DB2Entity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB2Entity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DB2Entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB2Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DB2Entity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB2Entity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\ORDERS.cs">
+      <DependentUpon>DB2Entity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,8 +124,14 @@
     <Content Include="Model\DB2Entity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DB2Entity.Context.cs</LastGenOutput>
+      <DependentUpon>DB2Entity.edmx</DependentUpon>
     </Content>
     <Content Include="Model\DB2Entity.edmx.sql" />
+    <Content Include="Model\DB2Entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DB2Entity.cs</LastGenOutput>
+      <DependentUpon>DB2Entity.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
