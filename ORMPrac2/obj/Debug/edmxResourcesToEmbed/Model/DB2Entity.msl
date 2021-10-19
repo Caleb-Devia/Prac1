@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB2EntityStoreContainer" CdmEntityContainer="DB2EntityContainer">
+    <EntitySetMapping Name="AGENTS">
+      <EntityTypeMapping TypeName="IsTypeOf(DB2Entity.AGENTS)">
+        <MappingFragment StoreEntitySet="AGENTS">
+          <ScalarProperty Name="AGENT_CODE" ColumnName="AGENT_CODE" />
+          <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+          <ScalarProperty Name="WORKING_AREA" ColumnName="WORKING_AREA" />
+          <ScalarProperty Name="COMISSION" ColumnName="COMISSION" />
+          <ScalarProperty Name="PHONE_NO" ColumnName="PHONE_NO" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER">
+      <EntityTypeMapping TypeName="IsTypeOf(DB2Entity.CUSTOMER)">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="CUST_CODE" ColumnName="CUST_CODE" />
+          <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
+          <ScalarProperty Name="CUST_CITY" ColumnName="CUST_CITY" />
+          <ScalarProperty Name="WORKING_AREA" ColumnName="WORKING_AREA" />
+          <ScalarProperty Name="CUST_COUNTRY" ColumnName="CUST_COUNTRY" />
+          <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+          <ScalarProperty Name="OPENING_AMT" ColumnName="OPENING_AMT" />
+          <ScalarProperty Name="RECEIVE_AMT" ColumnName="RECEIVE_AMT" />
+          <ScalarProperty Name="PAYMENT_AMT" ColumnName="PAYMENT_AMT" />
+          <ScalarProperty Name="OUTSTANDING_AMT" ColumnName="OUTSTANDING_AMT" />
+          <ScalarProperty Name="PHONE_NO" ColumnName="PHONE_NO" />
+          <ScalarProperty Name="AGENT_CODE" ColumnName="AGENT_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERS">
+      <EntityTypeMapping TypeName="IsTypeOf(DB2Entity.ORDERS)">
+        <MappingFragment StoreEntitySet="ORDERS">
+          <ScalarProperty Name="ORD_NUM" ColumnName="ORD_NUM" />
+          <ScalarProperty Name="ORD_AMOUNT" ColumnName="ORD_AMOUNT" />
+          <ScalarProperty Name="ADVENCE_AMOUNT" ColumnName="ADVENCE_AMOUNT" />
+          <ScalarProperty Name="ORD_DATE" ColumnName="ORD_DATE" />
+          <ScalarProperty Name="ORD_DESCRIPTION" ColumnName="ORD_DESCRIPTION" />
+          <ScalarProperty Name="AGENT_CODE" ColumnName="AGENT_CODE" />
+          <ScalarProperty Name="CUST_CODE" ColumnName="CUST_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

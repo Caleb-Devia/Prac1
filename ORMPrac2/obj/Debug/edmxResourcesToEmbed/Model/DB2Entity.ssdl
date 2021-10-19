@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB2Entity.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DB2EntityStoreContainer">
+    <EntitySet Name="AGENTS" EntityType="DB2Entity.Store.AGENTS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOMER" EntityType="DB2Entity.Store.CUSTOMER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ORDERS" EntityType="DB2Entity.Store.ORDERS" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AGENTSCUSTOMER" Association="DB2Entity.Store.AGENTSCUSTOMER">
+      <End Role="AGENTS" EntitySet="AGENTS" />
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+    </AssociationSet>
+    <AssociationSet Name="AGENTSORDERS" Association="DB2Entity.Store.AGENTSORDERS">
+      <End Role="AGENTS" EntitySet="AGENTS" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="CUSTOMERORDERS" Association="DB2Entity.Store.CUSTOMERORDERS">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AGENTS">
+    <Key>
+      <PropertyRef Name="AGENT_CODE" />
+    </Key>
+    <Property Name="AGENT_CODE" Type="int" Nullable="false" />
+    <Property Name="AGENT_NAME" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WORKING_AREA" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="COMISSION" Type="decimal" Nullable="false" />
+    <Property Name="PHONE_NO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="COUNTRY" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUST_CODE" />
+    </Key>
+    <Property Name="CUST_CODE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUST_NAME" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CUST_CITY" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WORKING_AREA" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CUST_COUNTRY" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GRADE" Type="int" Nullable="false" />
+    <Property Name="OPENING_AMT" Type="decimal" Nullable="false" />
+    <Property Name="RECEIVE_AMT" Type="decimal" Nullable="false" />
+    <Property Name="PAYMENT_AMT" Type="decimal" Nullable="false" />
+    <Property Name="OUTSTANDING_AMT" Type="decimal" Nullable="false" />
+    <Property Name="PHONE_NO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AGENT_CODE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDERS">
+    <Key>
+      <PropertyRef Name="ORD_NUM" />
+    </Key>
+    <Property Name="ORD_NUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ORD_AMOUNT" Type="decimal" Nullable="false" />
+    <Property Name="ADVENCE_AMOUNT" Type="decimal" Nullable="false" />
+    <Property Name="ORD_DATE" Type="datetime" Nullable="false" />
+    <Property Name="ORD_DESCRIPTION" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AGENT_CODE" Type="int" Nullable="false" />
+    <Property Name="CUST_CODE" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="AGENTSCUSTOMER">
+    <End Role="AGENTS" Type="DB2Entity.Store.AGENTS" Multiplicity="1" />
+    <End Role="CUSTOMER" Type="DB2Entity.Store.CUSTOMER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENTS">
+        <PropertyRef Name="AGENT_CODE" />
+      </Principal>
+      <Dependent Role="CUSTOMER">
+        <PropertyRef Name="AGENT_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AGENTSORDERS">
+    <End Role="AGENTS" Type="DB2Entity.Store.AGENTS" Multiplicity="1" />
+    <End Role="ORDERS" Type="DB2Entity.Store.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENTS">
+        <PropertyRef Name="AGENT_CODE" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="AGENT_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CUSTOMERORDERS">
+    <End Role="CUSTOMER" Type="DB2Entity.Store.CUSTOMER" Multiplicity="1" />
+    <End Role="ORDERS" Type="DB2Entity.Store.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUST_CODE" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="CUST_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

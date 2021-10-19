@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/14/2021 20:57:29
+-- Date Created: 10/18/2021 19:13:37
 -- Generated from EDMX file: C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\ORMPrac2\Model\DB2Entity.edmx
 -- --------------------------------------------------
 
@@ -20,11 +20,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AGENTSCUSTOMER]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CUSTOMER] DROP CONSTRAINT [FK_AGENTSCUSTOMER];
 GO
-IF OBJECT_ID(N'[dbo].[FK_CUSTOMERORDERS]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ORDERS] DROP CONSTRAINT [FK_CUSTOMERORDERS];
-GO
 IF OBJECT_ID(N'[dbo].[FK_AGENTSORDERS]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ORDERS] DROP CONSTRAINT [FK_AGENTSORDERS];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CUSTOMERORDERS]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ORDERS] DROP CONSTRAINT [FK_CUSTOMERORDERS];
 GO
 
 -- --------------------------------------------------
