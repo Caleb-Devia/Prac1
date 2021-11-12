@@ -66,6 +66,12 @@
     <Build Include="Facturacion.sql" />
     <Build Include="Venta.sql" />
     <Build Include="LugarStock.sql" />
+    <Build Include="Login.sql" />
+    <Build Include="LoginCliente.sql" />
+    <Build Include="VerProductos.sql" />
+    <Build Include="VerPuntos.sql" />
+    <Build Include="VerProductoBodega.sql" />
+    <Build Include="VerProductoGondola.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BDMercaMax.refactorlog" />

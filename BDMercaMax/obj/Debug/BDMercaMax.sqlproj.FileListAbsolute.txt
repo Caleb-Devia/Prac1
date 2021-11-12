@@ -8,3 +8,9 @@ C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\P
 C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac2\BDMercaMax\obj\Debug\BDMercaMax.pdb
 C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac2\BDMercaMax\bin\Debug\BDMercaMax.dll
 C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac2\BDMercaMax\bin\Debug\BDMercaMax.pdb
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\BDMercaMax\bin\Debug\BDMercaMax.dacpac
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\BDMercaMax\bin\Debug\BDMercaMax.dll
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\BDMercaMax\bin\Debug\BDMercaMax.pdb
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\BDMercaMax\obj\Debug\BDMercaMax.sqlproj.AssemblyReference.cache
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\BDMercaMax\obj\Debug\BDMercaMax.dll
+C:\Users\Caleb\Downloads\General\Universidad\Base de datos II\Repositorio BDII\Prac1\BDMercaMax\obj\Debug\BDMercaMax.pdb

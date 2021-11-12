@@ -1,0 +1,26 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Debe agregarse la columna [dbo].[LugarStock].[cantidad_gondola] de la tabla [dbo].[LugarStock], pero esta columna no
+         tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para
+         evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o
+         habilite la generación de valores predeterminados inteligentes como opción de implementación.
+
+** Acciones del usuario
+     Modificar
+       [dbo].[LugarStock] (Tabla)
+     Crear
+       [dbo].[VerProductos] (Vista)
+       [dbo].[VerProductoBodega] (Procedimiento)
+       [dbo].[VerProductoGondola] (Procedimiento)
+       [dbo].[VerPuntos] (Procedimiento)
+
+** Acciones de compatibilidad
+
+Debe agregarse la columna [dbo].[LugarStock].[cantidad_gondola] de la tabla [dbo].[LugarStock], pero esta columna no tiene un valor predeterminado y no admite valores NULL. Si la tabla contiene datos, el script ALTER no funcionará. Para evitar esta incidencia, agregue un valor predeterminado a la columna, márquela de modo que permita valores NULL o habilite la generación de valores predeterminados inteligentes como opción de implementación.
+
